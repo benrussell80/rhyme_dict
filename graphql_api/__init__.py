@@ -20,7 +20,7 @@ def create_app():
     
     from graphql_api.schema import schema
 
-    app.add_url_rule('/graphql', view_func=GraphQLView.as_view('graphql', schema=schema, graphiql=True))
+    app.add_url_rule('/', view_func=GraphQLView.as_view('graphql', schema=schema, graphiql=True))
 
 
     return app
