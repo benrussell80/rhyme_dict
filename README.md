@@ -66,11 +66,41 @@ To make the API I will use the python packages: Flask, graphene, and neo4j. [Fla
 So, I created a Flask app that services a GraphQL API and has functions like `echo` for getting info about a word and all of its pronunciations, and `rhyme` and `slantRhyme` for finding out more about  similar words.
 
 ### Deployment
-The production database for this project is hosted with AWS EC2.
+The production database for this project is hosted with AWS EC2. The serverless API is made available over AWS Lambda by using [Zappa](https://github.com/Miserlou/Zappa).
 
-You can interact with the most current version via the GraphIQL interface [here](https://ketnjehfei.execute-api.us-west-2.amazonaws.com/dev).
+You can interact with the most current version via the Graph*i*QL interface [here](https://ketnjehfei.execute-api.us-west-2.amazonaws.com/dev).
 
 Or, you can interact with it programmatically from this address https://ketnjehfei.execute-api.us-west-2.amazonaws.com/dev
+
+Some example queries to try out include
+
+```
+{
+  echo(word: "cat"){
+    word
+    pronunciation
+    syllables
+    rhymePattern
+  }
+}
+```
+
+```
+{
+  rhyme(word: "best"){
+    word
+    pronunciation
+  }
+}
+```
+
+```
+{
+  slantRhyme(word: "port", maxDistance: 1){
+    word
+  }
+}
+```
 
 ### Development
 I like to think that this project is "intermediate-friendly." It uses a variety of technologies, but isn't too large to get lost in. A lot can be added such as:
