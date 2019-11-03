@@ -13,7 +13,7 @@ class WordSchema(ObjectType):
 class Query(ObjectType):
     echo = List(WordSchema, word=String(required=True), pronunciation=String())
     rhyme = List(WordSchema, word=String(required=True), pronunciation=String())
-    slant_rhyme = List(WordSchema, word=String(required=True), max_distance=Int(required=True), pronunciation=String())
+    slant_rhyme = List(WordSchema, word=String(required=True), max_distance=Int(), pronunciation=String())
 
     @staticmethod
     def resolve_echo(parent, info, word, pronunciation=None):
@@ -30,7 +30,7 @@ class Query(ObjectType):
         return [WordSchema(**r.as_dict(), rhyme_pattern=r.rhyme_pattern) for r in rs]
 
     @staticmethod
-    def resolve_slant_rhyme(parent, info, word, max_distance, pronunciation=None):
+    def resolve_slant_rhyme(parent, info, word, max_distance=1, pronunciation=None):
         ws = Word.get_all_matching_words(word, pronunciation=pronunciation)
 
         # this is not returning distinct words;
