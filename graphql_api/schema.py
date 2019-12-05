@@ -33,10 +33,6 @@ class Query(ObjectType):
     def resolve_slant_rhyme(parent, info, word, max_distance=1, pronunciation=None):
         ws = Word.get_all_matching_words(word, pronunciation=pronunciation)
 
-        # this is not returning distinct words;
-        # for now I am going to use hashing on the Word objects but
-        # in the future I need to fix the query so that it can take
-        # in all pronunciations of the words and return the distinct ones
         srs = sorted(list(set([sr for w in ws for sr in w.get_slant_rhymes(max_distance=max_distance)])))
 
         return [WordSchema(**sr.as_dict(), rhyme_pattern=sr.rhyme_pattern) for sr in srs]

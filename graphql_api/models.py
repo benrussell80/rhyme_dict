@@ -41,25 +41,25 @@ class Word:
         results = query("MATCH (w1:Word {word: $word, pronunciation: $pronunciation, syllables: $syllables})-[:RhymesWith]-()-[sr:SlantRhymes]-()-[:RhymesWith]-(w2:Word) WHERE sr.distance <= $max_distance RETURN DISTINCT w2 ORDER BY w2.word;", parameters={**self.as_dict(), 'max_distance': max_distance}).data()
         return [Word(**dict(r['w2'])) for r in results]
 
-    # this will not be necessary once the queries for slant rhymes are fixed
-    def __lt__(self, other):
-        if isinstance(other, Word):
-            return self.word < other.word
+    # # this will not be necessary once the queries for slant rhymes are fixed
+    # def __lt__(self, other):
+    #     if isinstance(other, Word):
+    #         return self.word < other.word
         
-        return NotImplemented
+    #     return NotImplemented
 
-    def __hash__(self):
-        return hash((self.word, self.pronunciation, self.syllables))
+    # def __hash__(self):
+    #     return hash((self.word, self.pronunciation, self.syllables))
 
-    def __eq__(self, other):
-        if isinstance(other, Word):
-            return all([
-                self.word==other.word,
-                self.pronunciation==other.pronunciation,
-                self.syllables==other.syllables,
-            ])
+    # def __eq__(self, other):
+    #     if isinstance(other, Word):
+    #         return all([
+    #             self.word==other.word,
+    #             self.pronunciation==other.pronunciation,
+    #             self.syllables==other.syllables,
+    #         ])
 
-        return NotImplemented
+    #     return NotImplemented
 
     @classmethod
     def get_all_matching_words(cls, word, pronunciation=None):
@@ -69,4 +69,3 @@ class Word:
             results = query("MATCH (w:Word {word: $word, pronunciation: $pronunciation}) RETURN w;", {"word": word, "pronunciation": pronunciation}).data()
         
         return [cls(**dict(r['w'])) for r in results]
-

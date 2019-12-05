@@ -118,7 +118,7 @@ To set it up locally, make sure you have neo4j installed on your system and set 
 - `NEO4J_USERNAME` (probably `neo4j`)
 - `NEO4J_PASSWORD` (set this with `neo4j-admin set-initial-password <password>`)
     
-Once you've done that, install the requirements and make the database at that URI:
+Once you've done that, install the requirements and make the database at that URI (developed with Python 3.6):
 
     # optionally make a virtual environment
     pip install -r requirements.txt

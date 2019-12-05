@@ -24,6 +24,7 @@ if __name__ == "__main__":
         words = fh.read().strip().split('\n')
 
     with driver.session() as session:
+        session.run("MATCH (n) DETACH DELETE n;")
         for word in words:
             for pron_list in D[word]:
                 pron_str = ' '.join(pron_list)
