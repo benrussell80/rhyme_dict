@@ -68,7 +68,13 @@ So, I created a Flask app that services a GraphQL API and has functions like `ec
 ### Deployment
 The production database for this project is hosted with AWS EC2. The serverless API is made available over AWS Lambda by using [Zappa](https://github.com/Miserlou/Zappa).
 
+<<<<<<< HEAD
 You can interact with the most current version via the Graph*i*QL interface [here](https://hf5hjku3ve.execute-api.us-west-2.amazonaws.com/dev).
+=======
+You can interact with the most current version via the Graph*i*QL interface [here](https://oqwaxnujlg.execute-api.us-west-2.amazonaws.com/dev).
+
+Or, you can interact with it programmatically from this (same) address https://oqwaxnujlg.execute-api.us-west-2.amazonaws.com/dev
+>>>>>>> 887e635ef087286638d6ab1b752ec54730c0d01a
 
 Some example queries to try out include
 
