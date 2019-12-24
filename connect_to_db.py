@@ -3,6 +3,7 @@ import getpass
 from neo4j import GraphDatabase
 from string import Template
 import os
+from pprint import pprint
 
 
 URI = os.getenv("NEO4J_URI")
@@ -22,7 +23,7 @@ class Cmd(cmd.Cmd):
     def do_run(self, query):
         "Run a query in the database."
         result = execute(query)
-        print(result.data())
+        pprint(result.data())
         return
         
 
