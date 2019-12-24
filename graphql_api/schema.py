@@ -25,7 +25,7 @@ class Query(ObjectType):
     def resolve_rhyme(parent, info, word, pronunciation=None):
         ws = Word.get_all_matching_words(word, pronunciation=pronunciation)
 
-        rs = [r for w in ws for r in w.get_rhymes()]
+        rs = sorted(list(set([r for w in ws for r in w.get_rhymes()])))
         
         return [WordSchema(**r.as_dict(), rhyme_pattern=r.rhyme_pattern) for r in rs]
 
