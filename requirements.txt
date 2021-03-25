@@ -38,7 +38,7 @@ python-dateutil==2.6.1
 python-dotenv==0.10.3
 python-slugify==1.2.4
 pytz==2019.3
-PyYAML==5.1.2
+PyYAML==5.4
 requests==2.22.0
 rsa==3.4.2
 Rx==1.6.1
