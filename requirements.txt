@@ -40,7 +40,7 @@ python-slugify==1.2.4
 pytz==2019.3
 PyYAML==5.1.2
 requests==2.22.0
-rsa==3.4.2
+rsa==4.7
 Rx==1.6.1
 s3transfer==0.2.1
 six==1.12.0
